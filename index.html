@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Mi Futura Esposa 💖</title>
+
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --snoopy-black: #2B2D42;
+      --card-bg: #FFFFFF;
+      --lj-pink: #FFB3C1;
+      --lj-paper: #FFF9F2;
+      --uvst-red: #E63946;
+      --uvst-yellow: #FFE66D;
+      --secret-purple: #9D4EDD;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(180deg, #87CEEB 0%, #F5DF6D 30%, #FF8C00 60%, #E63946 100%);
+      background-attachment: fixed;
+      font-family: 'Poppins', sans-serif;
+      color: var(--snoopy-black);
+      overflow-x: hidden;
+    }
+
+    /* PANTALLA DE INICIO */
+    #start-screen {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: var(--card-bg);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      z-index: 9999; transition: opacity 1s ease; text-align: center; padding: 20px;
+    }
+
+    .start-btn {
+      background: var(--uvst-red); color: white;
+      font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700;
+      padding: 15px 35px; border: 3px solid var(--snoopy-black); border-radius: 50px;
+      cursor: pointer; box-shadow: 5px 5px 0px var(--snoopy-black); margin-top: 30px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #main-content {
+      display: none; opacity: 0; transition: opacity 1s ease;
+      max-width: 900px; margin: 0 auto; padding: 40px 20px;
+    }
+
+    header { text-align: center; margin-bottom: 50px; }
+    h1 { font-family: 'Caveat', cursive; font-size: 4.5rem; color: #FFFFFF; text-shadow: 3px 3px 0px var(--snoopy-black); line-height: 1.1; margin-bottom: 10px; }
+    .subtitle { color: var(--snoopy-black); font-weight: 700; font-size: 1.2rem; background: rgba(255, 255, 255, 0.8); display: inline-block; padding: 8px 20px; border-radius: 30px; border: 2px solid var(--snoopy-black); }
+
+    .svg-container { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; flex-wrap: wrap; }
+    .svg-box { background: white; padding: 15px; border-radius: 20px; border: 3px solid var(--snoopy-black); box-shadow: 6px 6px 0px var(--snoopy-black); }
+
+    /* TIMELINE */
+    .timeline { position: relative; padding: 20px 0; margin-bottom: 60px; }
+    .timeline::before { content: ''; position: absolute; top: 0; left: 50%; width: 4px; height: 100%; background: rgba(255, 255, 255, 0.6); transform: translateX(-50%); border-radius: 2px; }
+    .timeline-item { margin-bottom: 50px; position: relative; width: 50%; padding: 0 40px; }
+    .timeline-item:nth-child(odd) { left: 0; text-align: right; }
+    .timeline-item:nth-child(even) { left: 50%; text-align: left; }
+    .timeline-dot { position: absolute; top: 20px; width: 24px; height: 24px; background: var(--uvst-yellow); border: 4px solid var(--snoopy-black); border-radius: 50%; z-index: 2; }
+    .timeline-item:nth-child(odd) .timeline-dot { right: -12px; }
+    .timeline-item:nth-child(even) .timeline-dot { left: -12px; }
+
+    .timeline-card { background: var(--card-bg); border: 3px solid var(--snoopy-black); border-radius: 20px; padding: 20px; box-shadow: 6px 6px 0px var(--snoopy-black); cursor: pointer; transition: transform 0.2s; }
+    .timeline-card:hover { transform: translateY(-5px); }
+    .timeline-card h3 { font-family: 'Caveat', cursive; font-size: 2.2rem; color: var(--uvst-red); margin-bottom: 10px; line-height: 1.1; }
+    .timeline-card p { font-size: 0.95rem; color: #444; margin-bottom: 15px; }
+    .btn-read { background: var(--uvst-yellow); border: 2px solid var(--snoopy-black); padding: 5px 15px; border-radius: 15px; font-weight: 700; font-size: 0.8rem; display: inline-block; }
+
+    /* COMPARTIMENTO SECRETO */
+    .secret-section { background: #111; border: 4px solid var(--secret-purple); border-radius: 20px; padding: 30px; text-align: center; box-shadow: 8px 8px 0px var(--secret-purple); margin-top: 40px; color: white; }
+    .secret-section h2 { font-family: 'Caveat', cursive; font-size: 3rem; color: var(--secret-purple); }
+    .password-box { margin-top: 20px; }
+    .password-input { padding: 12px; font-size: 1.2rem; text-align: center; border-radius: 10px; border: 2px solid var(--secret-purple); width: 150px; outline: none; font-family: 'Poppins', sans-serif; }
+    .unlock-btn { background: var(--secret-purple); color: white; font-weight: bold; padding: 12px 25px; border: 2px solid white; border-radius: 15px; cursor: pointer; margin-left: 10px; }
+    
+    #secret-content { display: none; margin-top: 20px; text-align: left; background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; }
+
+    /* JUEGO */
+    .game-section { background: white; border: 4px solid var(--snoopy-black); border-radius: 20px; padding: 30px; text-align: center; box-shadow: 8px 8px 0px var(--snoopy-black); margin-top: 40px; }
+    .game-section h2 { font-family: 'Caveat', cursive; font-size: 3rem; color: var(--uvst-red); }
+    canvas { background: #FFF9F2; border: 3px solid var(--snoopy-black); border-radius: 10px; width: 100%; max-width: 400px; height: 300px; touch-action: none; }
+
+    /* MODALES */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 15px; }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+    .modal-content { background: var(--lj-paper); width: 100%; max-width: 650px; max-height: 90vh; overflow-y: auto; border-radius: 15px; border: 3px solid var(--snoopy-black); padding: 50px 40px; position: relative; box-shadow: 10px 10px 0px rgba(0,0,0,0.5); background-image: radial-gradient(var(--lj-pink) 1.5px, transparent 1.5px); background-size: 25px 25px; }
+    .close-btn { position: fixed; top: 20px; right: 20px; background: var(--uvst-red); color: white; border: 3px solid var(--snoopy-black); border-radius: 50%; width: 45px; height: 45px; font-size: 1.5rem; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; z-index: 1010; }
+    .modal-title { font-family: 'Caveat', cursive; font-size: 3.5rem; color: var(--uvst-red); text-align: center; margin-bottom: 25px; line-height: 1; border-bottom: 2px dashed var(--lj-pink); padding-bottom: 10px; }
+    .modal-body { font-family: 'Caveat', cursive; font-size: 1.8rem; color: #333; line-height: 1.5; white-space: pre-line; }
+
+    @media (max-width: 768px) {
+      .timeline::before { left: 30px; }
+      .timeline-item { width: 100%; padding-left: 70px; padding-right: 15px; text-align: left !important; }
+      .timeline-item:nth-child(even) { left: 0; }
+      .timeline-item:nth-child(odd) .timeline-dot, .timeline-item:nth-child(even) .timeline-dot { left: 18px; }
+      h1 { font-size: 3.5rem; }
+      .modal-body { font-size: 1.5rem; }
+      .password-input { width: 100%; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgAudio" loop preload="auto">
+    <source src="ojitos.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="start-screen">
+    <h1 style="color: var(--uvst-red); text-shadow: none;">Tengo un regalo para ti... 🎁</h1>
+    <p style="font-size: 1.2rem; margin-bottom: 20px;">Sube todo el volumen 🔊</p>
+    <button class="start-btn" onclick="startExperience()">Abrir mi sorpresa ❤️</button>
+  </div>
+
+  <div id="main-content">
+    
+    <header>
+      <h1>¡Feliz Día, Mi Niña Hermosa!</h1>
+      <p class="subtitle">Podrás tener 19, pero siempre serás mi niña consentida.</p>
+    </header>
+
+    <div class="svg-container">
+      <div class="svg-box">
+        <svg width="90" height="90" viewBox="0 0 200 200" fill="none">
+          <path d="M 60 110 C 40 100 40 60 80 50 C 130 40 170 60 170 100 C 170 125 150 145 120 145 C 90 145 70 135 60 110 Z" fill="white" stroke="#2B2D42" stroke-width="6"/>
+          <path d="M 75 65 C 55 65 45 95 50 120 C 55 135 70 135 75 120 C 80 100 80 75 75 65 Z" fill="#2B2D42"/>
+          <ellipse cx="168" cy="95" rx="10" ry="14" fill="#2B2D42" />
+          <path d="M 125 82 Q 133 74 140 82" stroke="#2B2D42" stroke-width="5" stroke-linecap="round"/>
+          <path d="M 135 115 Q 150 120 160 108" stroke="#2B2D42" stroke-width="5" stroke-linecap="round"/>
+          <path d="M 92 140 Q 110 146 125 141" stroke="#E63946" stroke-width="12" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="svg-box">
+        <svg width="90" height="90" viewBox="0 0 200 200" fill="none">
+          <path d="M 100 165 C 100 165 30 120 30 70 C 30 40 52 25 75 32 C 90 37 100 50 100 50 C 100 50 110 37 125 32 C 148 25 170 40 170 70 C 170 120 100 165 100 165 Z" fill="#E63946" stroke="#2B2D42" stroke-width="6"/>
+          <circle cx="100" cy="85" r="18" fill="white" stroke="#2B2D42" stroke-width="4"/>
+          <circle cx="100" cy="85" r="7" fill="#2B2D42"/>
+          <circle cx="103" cy="82" r="2.5" fill="white"/>
+          <path d="M 85 125 Q 100 115 115 125" stroke="#2B2D42" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="timeline">
+      
+      <!-- Punto 1 -->
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card" onclick="openModal('m1')">
+          <h3>De Amigos a Todo 💬</h3>
+          <p>Esas pláticas, nuestro inicio, y todas las flores que siempre te voy a dar.</p>
+          <div class="btn-read">Leer más 💌</div>
+        </div>
+      </div>
+
+      <!-- Punto 2 -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: #FFB3C1;"></div>
+        <div class="timeline-card" onclick="openModal('m2')">
+          <h3>Lo Que Amo de Ti ✨</h3>
+          <p>Tus ojos, la manera en que me miras y lo perfecta que eres para mí.</p>
+          <div class="btn-read">Leer más 💌</div>
+        </div>
+      </div>
+
+      <!-- Punto 3 -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: #00A896;"></div>
+        <div class="timeline-card" onclick="openModal('m3')">
+          <h3>El Videoblog Secreto 📹</h3>
+          <p>Mis nervios al límite antes de hacerte la pregunta que lo inició todo.</p>
+          <div class="btn-read">Leer más 💌</div>
+        </div>
+      </div>
+
+      <!-- Punto 4 -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: #9D4EDD;"></div>
+        <div class="timeline-card" onclick="openModal('m4')">
+          <h3>Nuestra Carta Lara Jean ✍️</h3>
+          <p>Nuestro contrato de amor, nuestras propias reglas, sin secretos.</p>
+          <div class="btn-read">Leer más 💌</div>
+        </div>
+      </div>
+
+      <!-- Punto 5 -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: #FF8C00;"></div>
+        <div class="timeline-card" onclick="openModal('m5')">
+          <h3>El Mirador 🌄</h3>
+          <p>Aquel paisaje en Xela donde soñaba con verte brillar a mi lado para siempre.</p>
+          <div class="btn-read">Leer más 💌</div>
+        </div>
+      </div>
+
+      <!-- Punto 6 -->
+      <div class="timeline-item">
+        <div class="timeline-dot" style="background: #E63946;"></div>
+        <div class="timeline-card" onclick="openModal('m6')">
+          <h3>La Boda 💍</h3>
+          <p>Falta tan poco para fin de mes. Mi promesa más profunda y eterna.</p>
+          <div class="btn-read">Leer más 💌</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECCIÓN SECRETA PICANTE -->
+    <div class="secret-section">
+      <h2>🔒 Zona Solo para Mi Niña</h2>
+      <p style="color: #CCC; font-size: 0.95rem;">Para leer esto, debes saber la respuesta.</p>
+      <p style="margin-top: 10px; font-weight: bold; color: var(--lj-pink);">Pista: ¿Qué fecha empezamos a ser novios? (Solo pon el número del día)</p>
+      
+      <div class="password-box">
+        <input type="password" id="secretPass" class="password-input" placeholder="Ej: 14">
+        <button class="unlock-btn" onclick="checkPassword()">Desbloquear 🗝️</button>
+      </div>
+      <p id="errorMsg" style="color: #FF4B4B; display: none; margin-top: 10px;">Esa no es la fecha, mi amor...</p>
+
+      <div id="secret-content">
+        <p style="font-family: 'Caveat', cursive; font-size: 1.85rem; line-height: 1.4; color: #FFF;">
+          Mi amor, aquí entre tú y yo, donde absolutamente nadie más puede leernos... te confieso que ya no aguanto las ganas de tenerte a solas. Me traes vuelto loco, quiero tenerte ya conmigo.
+          <br><br>
+          Me encanta tu trasero, me encantan tus pechos, me vuelve loco la forma de tu cintura y cómo encajas perfectamente entre mis manos. Me imagino cómo se siente besarte intensamente, que te aferres a mí, que me arañes la espalda mientras nos perdemos por completo el uno en el otro.
+          <br><br>
+          Quiero hacerte el amor con todas las ganas y la pasión que he estado guardando para ti. Sabes perfectamente que vas a ser mi primera vez, y no tienes idea de lo inmensamente feliz que me hace saber que me voy a entregar en cuerpo y alma, de la forma más sucia pero más romántica, única y exclusivamente a ti, a mi futura esposa. Eres mi fantasía y mi mayor deseo, mi niña hermosa.
+        </p>
+      </div>
+    </div>
+
+    <!-- MINIJUEGO -->
+    <div class="game-section">
+      <h2>Un Regalo Extra 🎮</h2>
+      <p>Aunque tengas 19, sé que la niña hermosa en ti merece que la consientan. ¡Desliza tu dedito en la pantalla para atrapar todo mi amor!</p>
+      <canvas id="gameCanvas" width="400" height="300"></canvas>
+      <p id="scoreDisplay" style="font-family: 'Caveat'; font-size: 2rem; color: var(--uvst-red); margin-top: 10px;">Corazones atrapados: 0</p>
+    </div>
+
+  </div>
+
+  <!-- MODALES DE CARTAS -->
+  
+  <div class="modal-overlay" id="m1">
+    <button class="close-btn" onclick="closeModal('m1')">X</button>
+    <div class="modal-content">
+      <h2 class="modal-title">De Amigos a Todo 💬</h2>
+      <div class="modal-body">
+        Mi niña hermosa,
+        
+        A veces me pongo a pensar en cómo empezó nuestra historia. Al principio éramos amigos, pláticas normales, mensajes casuales. Pero de repente, sin que yo me diera cuenta de en qué minuto exacto pasó, el simple hecho de ver tu nombre en mi pantalla se convirtió en mi adicción más grande.
+        
+        Recuerdo perfectamente las primeras veces que nos vimos con otros ojos, los nervios hermosos que sentía al estar cerca de ti. Recuerdo la primera vez que te llevé flores y esa sonrisa preciosa que iluminó tu cara. En ese instante me juré a mí mismo que iba a llenarte de flores y de detalles todos los días de tu vida, solo para asegurarme de que nunca dejes de sonreír así. Empezaste a gustarme tanto que un día desperté y supe que estaba irremediablemente enamorado de ti.
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="m2">
+    <button class="close-btn" onclick="closeModal('m2')">X</button>
+    <div class="modal-content">
+      <h2 class="modal-title">Lo Que Amo de Ti ✨</h2>
+      <div class="modal-body">
+        Mi amor,
+        
+        Si me pidieran hacer una lista de las cosas que me gustan de ti, jamás terminaría. Amo profundamente tus ojos, la forma en la que me miras, cómo brillan cuando te ríes de mis tonterías. 
+        
+        Amo tu voz, tu inteligencia, esa madurez increíble que tienes a tus 19 años y, al mismo tiempo, la niña tierna que sale cuando estamos solos. Eres la obra de arte más hermosa que he tenido el privilegio de apreciar. Cada pequeño detalle tuyo me enamora más y me confirma todos los días que eres la persona perfecta para mí.
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="m3">
+    <button class="close-btn" onclick="closeModal('m3')">X</button>
+    <div class="modal-content">
+      <h2 class="modal-title">El Videoblog Secreto 📹</h2>
+      <div class="modal-body">
+        ¿Te imaginas cuántas cosas pasaban por mi cabeza el día que decidí pedirte que fueras mi novia?
+        
+        Estaba tan nervioso que las manos me sudaban. Grabé ese videoblog secreto porque necesitaba que quedara evidencia para toda la vida de lo mucho que te amaba incluso antes de que me dijeras que sí. Quería poder mostrarte en el futuro: "Mira, así de loco me traía esta mujer desde el día cero".
+        
+        Yo ya sabía que tú no eras un amor pasajero. En mi mente y en mi corazón ya eras la persona definitiva. Ese video es el inicio documentado de la mejor decisión de toda mi vida.
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="m4">
+    <button class="close-btn" onclick="closeModal('m4')">X</button>
+    <div class="modal-content">
+      <h2 class="modal-title">Nuestra Carta Lara Jean ✍️</h2>
+      <div class="modal-body">
+        Para mi niña, la dueña de mi corazón,
+        
+        En las películas, Lara Jean escribía cartas cuando sentía cosas tan grandes que no podía decirlas. Y Peter Kavinsky hizo un contrato de amor. Nosotros no necesitamos fingir nada, pero este es nuestro propio contrato, escrito desde el fondo de mi alma.
+        
+        Prometo que siempre vas a ser mi prioridad. Prometo admirarte todos los días, llenarte de besos hasta que te canses, hacerte reír a carcajadas y cuidarte como al tesoro más grande que tengo. Prometo que nuestro amor nunca será un secreto guardado en una caja, sino que lo gritaré y lo demostraré cada día de nuestra vida. Ese es mi pacto contigo.
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="m5">
+    <button class="close-btn" onclick="closeModal('m5')">X</button>
+    <div class="modal-content">
+      <h2 class="modal-title">El Mirador 🌄</h2>
+      <div class="modal-body">
+        Mi futura esposa,
+        
+        Tengo muy grabado en mi mente ese momento hermoso en el mirador en Xela. El viento, el paisaje inmenso frente a nosotros, y yo pensando que la vista más hermosa que existía en todo Quetzaltenango la tenía yo justo enfrente, agarrándome de la mano.
+        
+        Estar ahí contigo, imaginando el futuro, planeando y soñando despierto... me hizo darme cuenta de la inmensa paz que me das. Ese lugar significa muchísimo, porque ahí reafirmé lo que mi corazón ya sabía: que tú eres mi hogar.
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="m6">
+    <button class="close-btn" onclick="closeModal('m6')">X</button>
+    <div class="modal-content">
+      <h2 class="modal-title">La Boda 💍</h2>
+      <div class="modal-body">
+        Mi amor,
+        
+        Falta tan poco para finales de este mes. Tan poquito para dar el paso más importante, hermoso y sagrado de toda nuestra vida juntos.
+        
+        Quiero que leas cada palabra de esto y la guardes en tu alma: ESTOY 100% SEGURO DE CASARME CONTIGO. No dudo, no temo, no hay nadie más. Casarme contigo, entregarte mi vida, mi lealtad, mi fidelidad y mi amor absoluto es mi mayor sueño hecho realidad. Vamos a construir una familia hermosa y una vida increíble. Te amo infinitamente.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // AUDIO Y PANTALLA
+    const audio = document.getElementById('bgAudio');
+    audio.volume = 0.6;
+
+    function startExperience() {
+      const startScreen = document.getElementById('start-screen');
+      const mainContent = document.getElementById('main-content');
+      
+      audio.play().catch(e => console.log("Bloqueo de navegador", e));
+
+      startScreen.style.opacity = '0';
+      setTimeout(() => {
+        startScreen.style.display = 'none';
+        mainContent.style.display = 'block';
+        setTimeout(() => {
+          mainContent.style.opacity = '1';
+          initGame();
+        }, 100);
+      }, 1000);
+    }
+
+    // MODALES
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+
+    // CONTRASEÑA SECRETA
+    function checkPassword() {
+      const pass = document.getElementById('secretPass').value;
+      const errorMsg = document.getElementById('errorMsg');
+      const secretContent = document.getElementById('secret-content');
+      
+      if (pass.trim() === "5") {
+        errorMsg.style.display = 'none';
+        secretContent.style.display = 'block';
+        secretContent.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        errorMsg.style.display = 'block';
+        secretContent.style.display = 'none';
+      }
+    }
+
+    // MINIJUEGO OPTIMIZADO PARA TOUCH
+    function initGame() {
+      const canvas = document.getElementById('gameCanvas');
+      const ctx = canvas.getContext('2d');
+      let score = 0;
+      
+      const player = { x: 175, y: 260, w: 50, h: 20 };
+      const hearts = [];
+
+      // Control Táctil
+      canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault(); 
+        const rect = canvas.getBoundingClientRect();
+        const touchX = e.touches[0].clientX - rect.left;
+        player.x = touchX - (player.w / 2);
+        
+        if(player.x < 0) player.x = 0;
+        if(player.x + player.w > canvas.width) player.x = canvas.width - player.w;
+      }, { passive: false });
+
+      // Control de Ratón
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        player.x = mouseX - (player.w / 2);
+        if(player.x < 0) player.x = 0;
+        if(player.x + player.w > canvas.width) player.x = canvas.width - player.w;
+      });
+
+      function createHeart() {
+        const x = Math.random() * (canvas.width - 20) + 10;
+        hearts.push({ x: x, y: -20, speed: Math.random() * 2 + 1.5 });
+      }
+
+      function update() {
+        for (let i = 0; i < hearts.length; i++) {
+          hearts[i].y += hearts[i].speed;
+          
+          if (hearts[i].y + 15 > player.y && hearts[i].x > player.x - 15 && hearts[i].x < player.x + player.w + 15) {
+            score++;
+            document.getElementById('scoreDisplay').innerText = "Corazones atrapados: " + score;
+            hearts.splice(i, 1);
+            i--;
+          } 
+          else if (hearts[i].y > canvas.height) {
+            hearts.splice(i, 1);
+            i--;
+          }
+        }
+        if (Math.random() < 0.035) createHeart();
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.fillStyle = '#E63946';
+        ctx.beginPath();
+        ctx.moveTo(player.x, player.y + player.h);
+        ctx.lineTo(player.x + player.w / 2, player.y);
+        ctx.lineTo(player.x + player.w, player.y + player.h);
+        ctx.fill();
+
+        ctx.font = '22px Arial';
+        for (let heart of hearts) {
+          ctx.fillText('❤️', heart.x, heart.y);
+        }
+      }
+
+      function loop() {
+        update();
+        draw();
+        requestAnimationFrame(loop);
+      }
+      
+      loop();
+    }
+  </script>
+</body>
+</html>
